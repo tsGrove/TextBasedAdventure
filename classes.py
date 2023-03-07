@@ -12,15 +12,12 @@ class PlayerClass:
     def __str__(self):
         return str(self.name)
 
-
-
 class Fighter(PlayerClass):
     def __init__(self, hit_points=15, armor=14, attack = 13, speed=10, name=''):
         super().__init__(hit_points, armor, attack, speed, name)
 
     def greetings(self):
         return str(f"Greetings, {self.name} the Fighter, and welcome to the Dungeon!")
-
 
 class Rogue(PlayerClass):
     def __init__(self, hit_points=13, armor=20, attack = 14, speed=15, name=''):
