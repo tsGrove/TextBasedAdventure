@@ -11,7 +11,7 @@ def attack_enemy(player, target):
 def combat(player, monster):
     encounter = True
     while encounter:
-        print(f"Oh shit, theres {monster}, the {monster.race}!")
+        print(f"Oh shit, theres {monster.name}, the {monster.race}!")
         player_choice = input('What would you like to do? \n'
                               'Attack, or run?\n').lower()
         if player_choice == 'attack':
@@ -20,10 +20,10 @@ def combat(player, monster):
            if monster.hit_points > 0 and player.hit_points > 0:
                continue
            elif monster.hit_points <= 0:
-               print(f"You defeated {monster.name}")
+               print(f"You defeated {monster}")
                encounter = False
            elif player.hit_points <= 0:
-               print(f"{monster.name} defeated you! Oh no! Better luck next time")
+               print(f"{monster} defeated you! Oh no! Better luck next time")
                encounter = False
 
 
