@@ -1,8 +1,7 @@
-# TODO GENERATE RANDOM ENCOUNTER
 # TODO Combat actions, attack, run, use item
 # TODO Develop inventory, likely using dict
 # TODO Exploration Actions
-from actions import combat
+from room_generation import generate_room
 from classes import classes_dict
 
 player_class = input("What class would you like to play?\n").title()
@@ -14,8 +13,6 @@ if player_class in classes_dict:
     print(player_character.greetings())
 
     while player_character.hit_points > 0:
-        combat(player_character)
-
-
+        generate_room()
 
 

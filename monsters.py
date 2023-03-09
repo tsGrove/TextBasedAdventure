@@ -1,4 +1,4 @@
-MONSTER_LIST = ['Goblin', 'Skeleton', 'Troll']
+EASY_MONSTER_LIST = ['Goblin', 'Skeleton', 'Troll']
 MONSTER_NAMES_DICT = {
                 "Troll" : ['Terry', 'Theodore', 'Trall', 'Timb'],
                 "Skeleton" : ['DICK', 'HARRY', 'RIBBED', 'Jesus Christ in the Flesh'],
@@ -32,7 +32,7 @@ class Troll(Monster):
     def __init__(self):
         super().__init__()
         self.race = 'Troll'
-        self.attack = 100
+        self.attack = 8
         self.armor = 7
         self.hit_points = 13
         self.speed = 10
