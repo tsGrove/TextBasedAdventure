@@ -53,3 +53,14 @@ classes_dict = {
                 'Ranger' : Ranger(),
                 'Rogue' : Rogue()
                 }
+
+player_class = input("What class would you like to play?\n").title()
+player_name = input('What would you like this character to be called?\n').title()
+
+if player_class in classes_dict:
+    player_character = classes_dict[player_class]
+    player_character.name = player_name
+    print(player_character.greetings())
+
+else:
+    print('Please enter a valid class.')

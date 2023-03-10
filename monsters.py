@@ -20,7 +20,7 @@ class Goblin(Monster):
     def __init__(self):
         super().__init__()
         self.race = 'Goblin'
-        self.attack = 50
+        self.attack = 5
         self.armor = 8
         self.hit_points = 8
         self.speed = 12
@@ -44,7 +44,7 @@ class Skeleton(Monster):
     def __init__(self):
         super().__init__()
         self.race = 'Skeleton'
-        self.attack = 70
+        self.attack = 7
         self.armor = 6
         self.hit_points = 6
         self.speed = 5

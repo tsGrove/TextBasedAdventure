@@ -1,18 +1,9 @@
-# TODO Combat actions, attack, run, use item
 # TODO Develop inventory, likely using dict
-# TODO Exploration Actions
-from room_generation import generate_room
-from classes import classes_dict
 
-player_class = input("What class would you like to play?\n").title()
-player_name = input('What would you like this character to be called?\n').title()
+from room_generation import player_choice
+from classes import player_character
 
-if player_class in classes_dict:
-    player_character = classes_dict[player_class]
-    player_character.name = player_name
-    print(player_character.greetings())
-
-    while player_character.hit_points > 0:
-        generate_room()
+while player_character.hit_points > 0:
+    player_choice()
 
 
