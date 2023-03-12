@@ -15,7 +15,7 @@ def player_attack(player, target):
 def monster_attack(monster, player):
     if random.randint(0,20) + (monster.attack/10) > player.armor:
 
-        damage = random.randint(1, 6) + player.attack
+        damage = random.randint(1, 6) + monster.attack
         player.hit_points -= damage
         return f"{monster.name} hit you for {damage} damage!\n"
 
@@ -26,10 +26,10 @@ def monster_attack(monster, player):
 def combat(player):
     encounter = True
 
-    MONSTER_RACE = EASY_MONSTER_LIST[random.randint(0, (len(EASY_MONSTER_LIST) - 1))]
-    MONSTER_NAME = MONSTER_NAMES_DICT[MONSTER_RACE][random.randint(0, int(len(MONSTER_NAMES_DICT[MONSTER_RACE]) - 1))]
-    monster = MONSTERS_DICT[MONSTER_RACE]
-    monster.name = MONSTER_NAME
+    monster_race = EASY_MONSTER_LIST[random.randint(0, (len(EASY_MONSTER_LIST) - 1))]
+    monster_name = MONSTER_NAMES_DICT[monster_race][random.randint(0, int(len(MONSTER_NAMES_DICT[monster_race]) - 1))]
+    monster = MONSTERS_DICT[monster_race]
+    monster.name = monster_name
 
     print(f"Oh shit, theres {monster.name}, the {monster.race}!\n")
     while encounter:

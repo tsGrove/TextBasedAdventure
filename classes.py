@@ -1,4 +1,7 @@
 # Player Classes
+import random
+from items import *
+
 class PlayerClass:
     def __init__(self, hit_points, armor, attack, speed, name, gold, level, max_hit_points):
         self.hit_points = hit_points
@@ -22,6 +25,7 @@ class Fighter(PlayerClass):
 
     def greetings(self):
         return str(f"Greetings, {self.name} the Fighter, and welcome to the Dungeon!\n")
+
 
 class Rogue(PlayerClass):
     def __init__(self, hit_points=13, armor=20, attack = 14, speed=15, name=''):
@@ -47,7 +51,7 @@ class Ranger(PlayerClass):
     def greetings(self):
         return str(f"Greetings, {self.name} the Ranger, and welcome to the Dungeon!\n")
 
-classes_dict = {
+CLASSES_DICT = {
                 'Fighter' : Fighter(),
                 'Wizard' : Wizard(),
                 'Ranger' : Ranger(),
@@ -57,10 +61,38 @@ classes_dict = {
 player_class = input("What class would you like to play?\n").title()
 player_name = input('What would you like this character to be called?\n').title()
 
-if player_class in classes_dict:
-    player_character = classes_dict[player_class]
+if player_class in CLASSES_DICT:
+    player_character = CLASSES_DICT[player_class]
     player_character.name = player_name
     print(player_character.greetings())
 
 else:
     print('Please enter a valid class.')
+
+class Item:
+    def __init__(self, name='', attribute='', buy_value=0, sell_value=0, description=''):
+        self.name = name
+        self.attribute = attribute
+        self.buy = buy_value
+        self.sell = sell_value
+        self.description = description
+
+class Sword(Item):
+    def __init__(self):
+        super().__init__()
+        self.name = 'Blade of Sharpness'
+        self.description = 'A fairly sharp blade, increasing the Fighter\'s attack by one.'
+        self.buy = 20
+        self.sell = 10
+
+class HealthPotion(Item):
+    def __init__(self):
+        super().__init__()
+        self.name = 'Potion of Healing'
+        self.description = 'A bright red beverage, slightly bubbling in a crystal vial. Smells of cherry.'
+        self.buy = 50
+        self.sell = 10
+
+    def drink_potion(self):
+        self.attribute = player_character.health_points = player_character.max_hit_points
+

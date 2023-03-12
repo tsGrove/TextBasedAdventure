@@ -1,8 +1,9 @@
 import random
-from classes import player_character
+from classes import *
 from actions import combat
+from merchant import *
 
-POSSIBLE_ENCOUNTERS = ['Monster', 'Treasure', 'Merchant', 'Trap']
+POSSIBLE_ENCOUNTERS = ['Monster', 'Monster', 'Monster', 'Treasure', 'Merchant', 'Merchant', 'Trap', 'Trap']
 def generate_room():
     room_contents = POSSIBLE_ENCOUNTERS[random.randint(0, len(POSSIBLE_ENCOUNTERS)-1)]
 
@@ -33,7 +34,21 @@ def player_choice():
                    'Use a/n (I)tem, (N)ext room, or (R)est?\n').lower()
 
     if choice == 'item' or choice == 'i':
-        print('This is a place holder until I do items :0)\n')
+        print("In your pocket you've got,")
+        print(f"{player_character.gold} gold jingling around, and")
+        for item in player_character.inventory:
+            print(f"{item}, {player_character.inventory[item]}")
+        potion_choice = input('Would you like to drink a potion, (Y)es or (n)o?\n').lower()
+        if potion_choice == 'y' or potion_choice == 'yes' and 'Potion of Healing' in player_character.inventory:
+            health_potion = HealthPotion()
+            health_potion.drink_potion()
+            print('You feel refreshed and rejuvenated!')
+        elif potion_choice == 'n' or potion_choice == 'no':
+            print('Alright alright alriiiiight')
+        elif potion_choice == 'y' or potion_choice == 'yes' and 'Potion of Healing' not in player_character.inventory:
+            print('You dont seem to have any health potions in your pocket, better stock up!')
+        else:
+            print('Please enter a valid selection of yes, or no.')
         player_choice()
 
     elif choice == 'n' or choice == 'next room':
@@ -42,7 +57,7 @@ def player_choice():
     elif choice =='r' or choice == 'rest':
 
         encounter_chance = random.randint(0, 20)
-        if encounter_chance >= 14:
+        if encounter_chance >= 8:
             print('You hear something approaching you in the darkness...\n')
             combat(player_character)
         else:
