@@ -1,5 +1,3 @@
-import random
-from classes import *
 from actions import combat
 from merchant import *
 
@@ -19,6 +17,7 @@ def generate_room():
 
     elif room_contents == 'Merchant':
         print('Hey, theres a wagon in this room? And some old guy selling wares?\n')
+        generate_merchant()
         player_choice()
 
     else:
@@ -26,7 +25,8 @@ def generate_room():
         trap_chance = random.randint(0,20)
         if trap_chance >= 6:
             trapped_room()
-
+        else:
+            print("Huh, must've been the wind.")
         player_choice()
 
 def player_choice():
@@ -36,20 +36,23 @@ def player_choice():
     if choice == 'item' or choice == 'i':
         print("In your pocket you've got,")
         print(f"{player_character.gold} gold jingling around, and")
+
         for item in player_character.inventory:
             print(f"{item}, {player_character.inventory[item]}")
-        potion_choice = input('Would you like to drink a potion, (Y)es or (n)o?\n').lower()
-        if potion_choice == 'y' or potion_choice == 'yes' and 'Potion of Healing' in player_character.inventory:
-            health_potion = HealthPotion()
-            health_potion.drink_potion()
-            print('You feel refreshed and rejuvenated!')
-        elif potion_choice == 'n' or potion_choice == 'no':
-            print('Alright alright alriiiiight')
-        elif potion_choice == 'y' or potion_choice == 'yes' and 'Potion of Healing' not in player_character.inventory:
-            print('You dont seem to have any health potions in your pocket, better stock up!')
-        else:
-            print('Please enter a valid selection of yes, or no.')
-        player_choice()
+            if 'Potion of Healing' in player_character.inventory:
+                potion_choice = input('Would you like to drink a potion, (Y)es or (n)o?\n').lower()
+
+                if potion_choice == 'y' or potion_choice == 'yes':
+                    health_potion = HealthPotion()
+                    health_potion.drink_potion()
+                    print('You feel refreshed and rejuvenated!')
+
+                elif potion_choice == 'n' or potion_choice == 'no':
+                    print('Alright alright alriiiiight')
+
+                else:
+                    print('Please enter a valid selection of yes, or no.')
+                player_choice()
 
     elif choice == 'n' or choice == 'next room':
         generate_room()
@@ -74,7 +77,7 @@ def trapped_room():
         print('Oh man that was a close one! There were some floor spikes down there!\n')
 
     else:
-        damage = random.randint(0, 6)
+        damage = random.randint(1, 6)
         player_character.hit_points -= damage
         print(f"Ouch! There were some spikes hidden in the floor, you took {damage} damage.\n")
 

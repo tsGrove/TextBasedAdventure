@@ -85,7 +85,7 @@ def combat(player):
 def gold_drop(player, monster):
     if monster.race in EASY_MONSTER_LIST:
 
-        gold_dropped = random.randint(0, 10)
+        gold_dropped = random.randint(2, 10)
         player.gold += gold_dropped
         print(f"You found {gold_dropped} gold from {monster.name}! Swish!")
         return player.gold
@@ -94,13 +94,13 @@ def game_over(player):
     player_max_health = player.max_hit_points
     player_choice = input('Would you like to play again? Please enter (y)es, or (n)o.\n').lower()
 
-    if player_choice == 'Yes' or player_choice == 'Y':
+    if player_choice == 'yes' or player_choice == 'y':
 
         player.hit_points = player_max_health
         player.greetings()
         return player.hit_points
 
-    elif player_choice == 'No' or player_choice == 'N':
+    elif player_choice == 'no' or player_choice == 'n':
         
         print('Well thanks for playing!')
 

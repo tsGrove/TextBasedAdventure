@@ -1,7 +1,3 @@
-# Player Classes
-import random
-from items import *
-
 class PlayerClass:
     def __init__(self, hit_points, armor, attack, speed, name, gold, level, max_hit_points):
         self.hit_points = hit_points
@@ -85,6 +81,31 @@ class Sword(Item):
         self.buy = 20
         self.sell = 10
 
+    def __call__(self, *args, **kwargs):
+            return self
+
+class Armor(Item):
+    def __init__(self):
+        super().__init__()
+        self.name = 'Superior Armor'
+        self.description = 'A set of sturdy leather armor, making you more resilient against monster attacks'
+        self.buy = 20
+        self.sell = 8
+
+    def __call__(self, *args, **kwargs):
+            return self
+
+class Boots(Item):
+    def __init__(self):
+        super().__init__()
+        self.name = 'Boots of Swiftness'
+        self.description = 'A pair of boots increasing your speed, making it more likely for you to dodge traps'
+        self.buy = 13
+        self.sell = 6
+
+    def __call__(self, *args, **kwargs):
+        return self
+
 class HealthPotion(Item):
     def __init__(self):
         super().__init__()
@@ -92,6 +113,9 @@ class HealthPotion(Item):
         self.description = 'A bright red beverage, slightly bubbling in a crystal vial. Smells of cherry.'
         self.buy = 50
         self.sell = 10
+
+    def __call__(self, *args, **kwargs):
+        return self
 
     def drink_potion(self):
         self.attribute = player_character.health_points = player_character.max_hit_points
