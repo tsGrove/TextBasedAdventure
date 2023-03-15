@@ -1,24 +1,22 @@
 from actions import combat
 from merchant import *
 
-POSSIBLE_ENCOUNTERS = ['Monster', 'Monster', 'Monster', 'Treasure', 'Merchant', 'Merchant', 'Trap', 'Trap']
+POSSIBLE_ENCOUNTERS = ['Monster', 'Monster', 'Monster', 'Monster', 'Treasure', 'Merchant', 'Trap', 'Trap']
 def generate_room():
     room_contents = POSSIBLE_ENCOUNTERS[random.randint(0, len(POSSIBLE_ENCOUNTERS)-1)]
 
     if room_contents == 'Monster':
         combat(player_character)
-        player_choice()
 
     elif room_contents == 'Treasure':
-        gold_found = random.randint(5, 30)
+        gold_found = random.randint(5, 10)
         print('Theres something shiny in the corner there...\n')
         print(f"You found {gold_found} gold, nice!\n")
-        player_choice()
+        player_character.gold += gold_found
 
     elif room_contents == 'Merchant':
         print('Hey, theres a wagon in this room? And some old guy selling wares?\n')
         generate_merchant()
-        player_choice()
 
     else:
         print('Hmmm...this room seems quiet. You feel like something is off.\n')
@@ -27,7 +25,6 @@ def generate_room():
             trapped_room()
         else:
             print("Huh, must've been the wind.")
-        player_choice()
 
 def player_choice():
     choice = input('What would you like to do?\n'
@@ -35,10 +32,10 @@ def player_choice():
 
     if choice == 'item' or choice == 'i':
         print("In your pocket you've got,")
-        print(f"{player_character.gold} gold jingling around, and")
+        print(f"{player_character.gold} gold jingling around,")
 
         for item in player_character.inventory:
-            print(f"{item}, {player_character.inventory[item]}")
+            print(f"and {item}, {player_character.inventory[item]}")
             if 'Potion of Healing' in player_character.inventory:
                 potion_choice = input('Would you like to drink a potion, (Y)es or (n)o?\n').lower()
 
@@ -68,16 +65,15 @@ def player_choice():
             player_character.hit_points = player_character.max_hit_points
     else:
         print("I'm sorry, you wanted to do what?\n")
-        player_choice()
 
 def trapped_room():
     trap_difficulty_check = 13
 
     if random.randint(0, player_character.speed) + player_character.level > trap_difficulty_check:
-        print('Oh man that was a close one! There were some floor spikes down there!\n')
+        print('Oh man that was a close one! There were some floor spikes down there! Good thing we didnt step on them.\n')
 
     else:
-        damage = random.randint(1, 6)
+        damage = random.randint(1, 3)
         player_character.hit_points -= damage
         print(f"Ouch! There were some spikes hidden in the floor, you took {damage} damage.\n")
 

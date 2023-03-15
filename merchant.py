@@ -23,7 +23,8 @@ def generate_merchant():
 
         print(f'Most excellent! Today for you I have a {item_choice.name}, which is {item_choice.description},'
               f' for the low, low price of {item_choice.buy} gold. Are you interested?')
-        buy_or_pass = input(f'Would you like to spend {item_choice.name} for {item_choice.buy} gold? (Y)es or (n)o.\n').lower()
+        buy_or_pass = input(f'Would you like to spend {item_choice.name} for {item_choice.buy} gold? (Y)es or (n)o.\n'
+                            f'You currently have {player_character.gold} gold.\n').lower()
 
         if buy_or_pass == 'yes' or buy_or_pass == 'y' and player_character.gold > item_choice.buy:
 

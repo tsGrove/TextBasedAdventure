@@ -1,8 +1,9 @@
 import random
 from monsters import *
+import sys
 
 def player_attack(player, target):
-    if random.randint(0,20) + (player.attack/10) > target.armor:
+    if random.randint(0,20) + round(player.attack/10) > target.armor:
 
         damage = random.randint(1, 6) + player.attack
         target.hit_points -= damage
@@ -32,11 +33,11 @@ def combat(player):
     monster.name = monster_name
 
     print(f"Oh shit, theres {monster.name}, the {monster.race}!\n")
+    print(monster.hit_points)
     while encounter:
 
         player_choice = input("What would you like to do? \n"
                               "(A)ttack, or (R)un?\n").lower()
-
         if player_choice == 'attack' or player_choice == 'a':
 
            print(player_attack(player, monster))
@@ -49,7 +50,11 @@ def combat(player):
 
                encounter = False
                print(f"You defeated {monster}\n")
+               player.monsters_slain += 1
                gold_drop(player, monster)
+               player.experience_points += monster.exp_yield
+               player.level_up()
+               monster.hit_points = monster.max_hit_points
 
            elif player.hit_points <= 0 < monster.hit_points:
 
@@ -91,20 +96,7 @@ def gold_drop(player, monster):
         return player.gold
 
 def game_over(player):
-    player_max_health = player.max_hit_points
-    player_choice = input('Would you like to play again? Please enter (y)es, or (n)o.\n').lower()
-
-    if player_choice == 'yes' or player_choice == 'y':
-
-        player.hit_points = player_max_health
-        player.greetings()
-        return player.hit_points
-
-    elif player_choice == 'no' or player_choice == 'n':
-        
-        print('Well thanks for playing!')
-
-    else:
-        print('What?')
-        game_over(player)
+    print(f'It was a good run {player.name}, but eventually you fell. \n'
+          f'You slayed {player.monsters_slain} monsters, had {player.gold} gold, and reached level {player.level}!\n'
+          f'Better luck next time!')
 

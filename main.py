@@ -1,6 +1,4 @@
-# TODO Work on item classes
-# TODO Develop merchant NPC
-# TODO Add exp drops to monsters so PC can level up
+# TODO Add more item types
 # TODO Add harder enemies, multiple levels of difficulty as PC levels up
 
 from room_generation import player_choice
