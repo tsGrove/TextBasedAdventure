@@ -1,5 +1,6 @@
 import random
 from monsters import *
+from dialogue import COMBAT_ESCAPE_DIALOGUE
 
 def player_attack(player, target):
     if random.randint(0,20) + round(player.attack/10) > target.armor:
@@ -73,7 +74,7 @@ def combat(player):
 
             if run_chance > monster.speed:
 
-                print("You successfully escaped!\n")
+                print(COMBAT_ESCAPE_DIALOGUE[random.randint(0, (len(COMBAT_ESCAPE_DIALOGUE) - 1))])
                 encounter = False
 
             else:

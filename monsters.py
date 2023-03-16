@@ -160,6 +160,7 @@ class Lich(Monster):
         self.exp_yield = 20
         self.bloodied = 'Raising its staff, you feel the temperature in the air drop around you, the room becomes cold and the air dense.'
         self.intro = 'Floating above the ground, wielding a staff emitting great power, a Lich appears to defend its phylactery!'
+
 class AdultBlackDragon(Monster):
     def __init__(self):
         super().__init__()

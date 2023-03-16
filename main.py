@@ -1,5 +1,6 @@
+# TODO Add turn order based on player speed vs monster speed
 # TODO Add more item types
-# TODO Add harder enemies, multiple levels of difficulty as PC levels up
+# TODO Multiple levels of difficulty as PC levels up
 
 from room_generation import player_choice
 from classes import player_character
