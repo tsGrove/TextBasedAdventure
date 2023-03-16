@@ -4,7 +4,6 @@ from merchant import *
 POSSIBLE_ENCOUNTERS = ['Monster', 'Monster', 'Monster', 'Monster', 'Treasure', 'Merchant', 'Trap', 'Trap']
 def generate_room():
     room_contents = POSSIBLE_ENCOUNTERS[random.randint(0, len(POSSIBLE_ENCOUNTERS)-1)]
-
     if room_contents == 'Monster':
         combat(player_character)
 
@@ -15,7 +14,7 @@ def generate_room():
         player_character.gold += gold_found
 
     elif room_contents == 'Merchant':
-        print('Hey, theres a wagon in this room? And some old guy selling wares?\n')
+        print('Hm? You can hear footsteps approaching from around the corner, you ready yourself for...\n')
         generate_merchant()
 
     else:

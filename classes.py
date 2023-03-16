@@ -100,8 +100,8 @@ class Item:
 class Sword(Item):
     def __init__(self):
         super().__init__()
-        self.name = 'Blade of Sharpness'
-        self.description = 'A fairly sharp blade, increasing your attack by one.'
+        self.name = 'Blade of Monster Hurting'
+        self.description = 'a fairly sharp blade, increasing your attack by one'
         self.buy = 20
         self.sell = 10
 
@@ -112,7 +112,7 @@ class Armor(Item):
     def __init__(self):
         super().__init__()
         self.name = 'Superior Armor'
-        self.description = 'A set of sturdy leather armor, making you more resilient against monster attacks'
+        self.description = 'a set of sturdy leather armor, making you more resilient against monster attacks'
         self.buy = 20
         self.sell = 8
 
@@ -123,7 +123,7 @@ class Boots(Item):
     def __init__(self):
         super().__init__()
         self.name = 'Boots of Swiftness'
-        self.description = 'A pair of boots increasing your speed, making it more likely for you to dodge traps'
+        self.description = 'a pair of boots increasing your speed, making it more likely for you to dodge traps'
         self.buy = 13
         self.sell = 6
 

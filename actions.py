@@ -1,6 +1,5 @@
 import random
 from monsters import *
-import sys
 
 def player_attack(player, target):
     if random.randint(0,20) + round(player.attack/10) > target.armor:
@@ -10,7 +9,6 @@ def player_attack(player, target):
         return f"You hit {target.name} for {damage}!\n"
 
     else:
-
         return f"Unfortunately you missed {target.name}, try again!\n"
 
 def monster_attack(monster, player):
@@ -29,15 +27,15 @@ def combat(player):
 
     monster_race = EASY_MONSTER_LIST[random.randint(0, (len(EASY_MONSTER_LIST) - 1))]
     monster_name = MONSTER_NAMES_DICT[monster_race][random.randint(0, int(len(MONSTER_NAMES_DICT[monster_race]) - 1))]
-    monster = MONSTERS_DICT[monster_race]
+    monster = EASY_MONSTERS_DICT[monster_race]
     monster.name = monster_name
 
-    print(f"Oh shit, theres {monster.name}, the {monster.race}!\n")
-    print(monster.hit_points)
+    print(monster.intro)
+    print(f"Look out! Its {monster.name} the {monster.race}!")
+
     while encounter:
 
-        player_choice = input("What would you like to do? \n"
-                              "(A)ttack, or (R)un?\n").lower()
+        player_choice = input("What would you like to do? \n(A)ttack, or (R)un?\n").lower()
         if player_choice == 'attack' or player_choice == 'a':
 
            print(player_attack(player, monster))
@@ -49,7 +47,7 @@ def combat(player):
            elif monster.hit_points <= 0 < player.hit_points:
 
                encounter = False
-               print(f"You defeated {monster}\n")
+               print(f"You defeated {monster}.\n")
                player.monsters_slain += 1
                gold_drop(player, monster)
                player.experience_points += monster.exp_yield
@@ -93,7 +91,8 @@ def gold_drop(player, monster):
         gold_dropped = random.randint(2, 10)
         player.gold += gold_dropped
         print(f"You found {gold_dropped} gold from {monster.name}! Swish!")
-        return player.gold
+
+    return player.gold
 
 def game_over(player):
     print(f'It was a good run {player.name}, but eventually you fell. \n'

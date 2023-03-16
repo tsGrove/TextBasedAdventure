@@ -1,5 +1,6 @@
 import random
 from classes import Sword, Armor, Boots, HealthPotion, player_character
+from dialogue import MERCHANT_DIALOGUE_LIST
 
 ITEM_TYPES = ['Weapon', 'Potion', 'Armor', 'Boots']
 
@@ -11,11 +12,8 @@ ITEM_DICT = {
             }
 
 def generate_merchant():
-    print("An old man approaches from the cart, the torch light behind him makes it hard to see his face as he calls out,\n"
-          "'Greetings adventurer, you look like you could use an extra edge here in the dungeon, have a look at my "
-          "goods?'")
-
-    shop_or_not = input('Would you like to see what item the old man has for sale? (Y)es, or (n)o.\n').lower()
+    print(MERCHANT_DIALOGUE_LIST[random.randint(0, (len(MERCHANT_DIALOGUE_LIST) - 1))])
+    shop_or_not = input('Would you like to see what item the merchant has for sale? (Y)es, or (n)o.\n').lower()
 
     if shop_or_not == 'yes' or shop_or_not == 'y':
         random_item = ITEM_TYPES[random.randint(0, (len(ITEM_TYPES) - 1))]
