@@ -1,6 +1,4 @@
-import random
-
-
+# Player Classes -------------------------------------------------------------------------------------------------------
 class PlayerClass:
     def __init__(self, hit_points, armor, attack, speed, name,
                  gold, level, max_hit_points, monsters_slain, experience_points, exp_needed_to_level):
@@ -19,6 +17,9 @@ class PlayerClass:
 
     def __str__(self):
         return str(self.name)
+
+    def __int__(self):
+        return int(self.speed)
 
     def level_up(self):
         if self.experience_points >= self.exp_needed_to_level:
@@ -78,6 +79,8 @@ CLASSES_DICT = {
                 'Rogue' : Rogue()
                 }
 
+# Creation of Character -----------------------------------------------------------------------------------------------
+
 player_class = input("What class would you like to play?\n").title()
 player_name = input('What would you like this character to be called?\n').title()
 
@@ -89,6 +92,8 @@ if player_class in CLASSES_DICT:
 else:
     print('Please enter a valid class.')
 
+
+# Item Classes ---------------------------------------------------------------------------------------------------------
 class Item:
     def __init__(self, name='', attribute='', buy_value=0, sell_value=0, description=''):
         self.name = name
@@ -96,6 +101,10 @@ class Item:
         self.buy = buy_value
         self.sell = sell_value
         self.description = description
+
+    def __call__(self, *args, **kwargs):
+        return self
+
 
 class Sword(Item):
     def __init__(self):
@@ -105,8 +114,6 @@ class Sword(Item):
         self.buy = 20
         self.sell = 10
 
-    def __call__(self, *args, **kwargs):
-            return self
 
 class Armor(Item):
     def __init__(self):
@@ -116,8 +123,6 @@ class Armor(Item):
         self.buy = 20
         self.sell = 8
 
-    def __call__(self, *args, **kwargs):
-            return self
 
 class Boots(Item):
     def __init__(self):
@@ -127,8 +132,6 @@ class Boots(Item):
         self.buy = 13
         self.sell = 6
 
-    def __call__(self, *args, **kwargs):
-        return self
 
 class HealthPotion(Item):
     def __init__(self):
@@ -138,8 +141,6 @@ class HealthPotion(Item):
         self.buy = 50
         self.sell = 10
 
-    def __call__(self, *args, **kwargs):
-        return self
 
     def drink_potion(self):
         self.attribute = player_character.health_points = player_character.max_hit_points

@@ -1,5 +1,5 @@
 import random
-from classes import Sword, Armor, Boots, HealthPotion, player_character
+from player_info import Sword, Armor, Boots, HealthPotion, player_character
 from dialogue import MERCHANT_DIALOGUE_LIST
 
 ITEM_TYPES = ['Weapon', 'Potion', 'Armor', 'Boots']

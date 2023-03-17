@@ -1,3 +1,4 @@
+# Base Monster Class ---------------------------------------------------------------------------------------------------
 class Monster:
     def __init__(self, name='', race='', attack=0, hit_points=0, speed=0, max_hit_points=0, exp_yield=0, intro=''):
         self.name = name
@@ -19,7 +20,8 @@ class Monster:
         return self
 
 
-# Easy Difficulty Monsters ----------------------------------------------------
+# Easy Difficulty Monsters --------------------------------------------------------------------------------------------
+
 class Goblin(Monster):
     def __init__(self):
         super().__init__()
@@ -62,6 +64,7 @@ class Kobold(Monster):
 
 
 # Medium Difficulty Monsters ----------------------------------------------------------------------------------------
+
 class Troll(Monster):
     def __init__(self):
         super().__init__()
@@ -102,6 +105,7 @@ class Ooze(Monster):
 
 
 # Hard Difficulty Monsters ---------------------------------------------------------------------------------------
+
 class ClayGolem(Monster):
     def __init__(self):
         super().__init__()
@@ -139,6 +143,7 @@ class YoungBlackDragon(Monster):
 
 
 # Boss Monsters -----------------------------------------------------------------------------------------------------
+
 class Vampire(Monster):
     def __init__(self):
         super().__init__()
@@ -173,6 +178,7 @@ class AdultBlackDragon(Monster):
         self.intro = 'The biggest treasure hoard you\'ve ever seen sits in front of you, but to get through it you need to defeat the Adult Black Dragon!'
 
 # Monster Names --------------------------------------------------------------------------------------------------
+
 MONSTER_NAMES_DICT = {
                 "Troll" : ['Stinky Steve', 'Fart Breath Harold', 'Pam’kol', 'Shexoha'],
                 "Skeleton" : ['Bones McCoy', 'Indiana Bones', 'Jerry Spinefeld', 'Bona Lisa', 'Skelly Clarkson'],
@@ -181,6 +187,7 @@ MONSTER_NAMES_DICT = {
                 }
 
 # Monsters Dictionary --------------------------------------------------------------------------------------------
+
 EASY_MONSTERS_DICT = {
                 'Goblin' : Goblin(),
                 'Kobold' : Kobold(),
@@ -206,6 +213,7 @@ BOSS_MONSTERS_DICT = {
 }
 
 # Monsters by List -----------------------------------------------------------------------------------------------
+
 EASY_MONSTER_LIST = ['Goblin', 'Skeleton', 'Kobold']
 MEDIUM_MONSTER_LIST = ['Troll', 'Ghoul', 'Ooze']
 HARD_MONSTER_LIST = ['Clay Golem', 'Bone Devil', 'Young Black Dragon']
