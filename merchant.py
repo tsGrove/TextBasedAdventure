@@ -1,6 +1,6 @@
-import random
 from player_info import Sword, Armor, Boots, HealthPotion, player_character
 from dialogue import MERCHANT_DIALOGUE_LIST
+from actions import random_element_from_list
 
 ITEM_TYPES = ['Weapon', 'Potion', 'Armor', 'Boots']
 
@@ -12,11 +12,11 @@ ITEM_DICT = {
             }
 
 def generate_merchant():
-    print(MERCHANT_DIALOGUE_LIST[random.randint(0, (len(MERCHANT_DIALOGUE_LIST) - 1))])
+    print(random_element_from_list(MERCHANT_DIALOGUE_LIST))
     shop_or_not = input('Would you like to see what item the merchant has for sale? (Y)es, or (n)o.\n').lower()
 
     if shop_or_not == 'yes' or shop_or_not == 'y':
-        random_item = ITEM_TYPES[random.randint(0, (len(ITEM_TYPES) - 1))]
+        random_item = random_element_from_list(ITEM_TYPES)
         item_choice = ITEM_DICT[random_item]
 
         print(f'Most excellent! Today for you I have a {item_choice.name}, which is {item_choice.description},'
@@ -48,10 +48,3 @@ def generate_merchant():
 
         else:
             print('Im sorry? I couldn\'t hear you over the monsters screaming')
-
-
-
-
-
-
-

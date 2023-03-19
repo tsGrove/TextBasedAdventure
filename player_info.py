@@ -31,45 +31,45 @@ class PlayerClass:
             self.experience_points = 0
             self.exp_needed_to_level += 15
             self.level += 1
-            print(f"Congrats! You reached level {self.level}.")
+            print(f"Congrats! You reached level {self.level}!")
 
 class Fighter(PlayerClass):
-    def __init__(self, hit_points=15, armor=14, attack = 13, speed=10, name=''):
+    def __init__(self, hit_points=10, armor=10, attack =3, speed=3, name=''):
         super().__init__(hit_points, armor, attack, speed, name,
-                         gold=0, level=1, max_hit_points=15, monsters_slain=0, experience_points=0, exp_needed_to_level= 10)
+                         gold=0, level=1, max_hit_points=10, monsters_slain=0, experience_points=0, exp_needed_to_level= 10)
 
     def greetings(self):
-        return str(f"Greetings, {self.name} the Fighter, and welcome to the Dungeon!\n")
+        return str(f"Greetings, {self.name} the Fighter, and welcome to the Text-geon!\n")
 
 
 class Rogue(PlayerClass):
-    def __init__(self, hit_points=13, armor=16, attack = 14, speed=15, name=''):
+    def __init__(self, hit_points=8, armor=10, attack =3, speed=5, name=''):
         super().__init__(hit_points, armor, attack, speed, name,
-                         gold=0, level=1, max_hit_points=13, monsters_slain=0, experience_points=0, exp_needed_to_level= 10)
+                         gold=0, level=1, max_hit_points=8, monsters_slain=0, experience_points=0, exp_needed_to_level= 10)
         self.inventory = {}
 
     def greetings(self):
-        return str(f"Greetings, {self.name} the Rogue, and welcome to the Dungeon!\n")
+        return str(f"Greetings, {self.name} the Rogue, and welcome to the Text-geon!\n")
 
 
 class Wizard(PlayerClass):
-    def __init__(self, hit_points=13, armor=11, attack = 16, speed=13, name=''):
+    def __init__(self, hit_points=6, armor=6, attack =8, speed=3, name=''):
         super().__init__(hit_points, armor, attack, speed, name,
-                         gold=0, level=1, max_hit_points=13, monsters_slain=0, experience_points=0, exp_needed_to_level= 10)
+                         gold=0, level=1, max_hit_points=6, monsters_slain=0, experience_points=0, exp_needed_to_level= 10)
         self.inventory = {}
 
     def greetings(self):
-        return str(f"Greetings, {self.name} the Wizard, and welcome to the Dungeon!\n")
+        return str(f"Greetings, {self.name} the Wizard, and welcome to the Text-geon!\n")
 
 
 class Ranger(PlayerClass):
-    def __init__(self, hit_points=13, armor=18, attack = 12, speed=16, name=''):
+    def __init__(self, hit_points=10, armor=10, attack = 3, speed=5, name=''):
         super().__init__(hit_points, armor, attack, speed, name,
-                         gold=0, level=1, max_hit_points=13, monsters_slain=0, experience_points=0, exp_needed_to_level= 10)
+                         gold=0, level=1, max_hit_points=10, monsters_slain=0, experience_points=0, exp_needed_to_level= 10)
         self.inventory = {}
 
     def greetings(self):
-        return str(f"Greetings, {self.name} the Ranger, and welcome to the Dungeon!\n")
+        return str(f"Greetings, {self.name} the Ranger, and welcome to the Text-geon!\n")
 
 
 CLASSES_DICT = {
@@ -81,6 +81,12 @@ CLASSES_DICT = {
 
 # Creation of Character -----------------------------------------------------------------------------------------------
 
+print("Welcome to the Text-geon, a text based, randomly generated dungeon-crawl.\n"
+      "Here are a list of playable classes:\n"
+      "Fighter: Average across the board. Doesn't excel in any particular area, nor does he suffer. \n"
+      "Rogue: Nimble in the shadows, the Rogue has high speed, average attack, average armor, below average HP. \n"
+      "Wizard: Spellbook in hand, the Wizard is a glass canon. High attack, average speed, below average HP, below average armor.\n"
+      "Ranger: Slow and steady wins the race. the Ranger is methodical in these dungeons. High Speed, High Armor, Average HP, low attack.\n")
 player_class = input("What class would you like to play?\n").title()
 player_name = input('What would you like this character to be called?\n').title()
 
@@ -91,7 +97,6 @@ if player_class in CLASSES_DICT:
 
 else:
     print('Please enter a valid class.')
-
 
 # Item Classes ---------------------------------------------------------------------------------------------------------
 class Item:

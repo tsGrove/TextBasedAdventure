@@ -8,7 +8,7 @@ def random_element_from_list(custom_list):
 
 
 def player_attack(player, target):
-    if random.randint(0, 20) + round(player.attack / 10) > target.armor:
+    if random.randint(1, 20) + player.attack > target.armor:
 
         damage = random.randint(1, 6) + player.attack
         target.hit_points -= damage
@@ -19,7 +19,7 @@ def player_attack(player, target):
 
 
 def monster_attack(monster, player):
-    if random.randint(0, 20) + (monster.attack / 10) > player.armor:
+    if random.randint(1, 20) > player.armor:
 
         damage = random.randint(1, 6) + monster.attack
         player.hit_points -= damage
@@ -32,13 +32,33 @@ def monster_attack(monster, player):
 
 def combat(player):
     encounter = True
-    monster_race = random_element_from_list(EASY_MONSTER_LIST)
-    monster_name = MONSTER_NAMES_DICT[monster_race][random.randint(0, int(len(MONSTER_NAMES_DICT[monster_race]) - 1))]
-    monster = EASY_MONSTERS_DICT[monster_race]
-    monster.name = monster_name
 
-    player_turn = random.randint(0, 20) + player.speed
-    monster_turn = random.randint(0, 20) + monster.speed
+    if player.level <= 3:
+        monster_race = random_element_from_list(EASY_MONSTER_LIST)
+        monster_name = MONSTER_NAMES_DICT[monster_race][random.randint(0, int(len(MONSTER_NAMES_DICT[monster_race]) - 1))]
+        monster = MONSTERS_DICT[monster_race]
+        monster.name = monster_name
+
+    elif 3 < player.level <= 6:
+        monster_race = random_element_from_list(MEDIUM_MONSTER_LIST)
+        monster_name = MONSTER_NAMES_DICT[monster_race][random.randint(0, (len(MONSTER_NAMES_DICT[monster_race]) - 1))]
+        monster = MONSTERS_DICT[monster_race]
+        monster.name = monster_name
+
+    elif 6 < player.level <= 9:
+        monster_race = random_element_from_list(HARD_MONSTER_LIST)
+        monster_name = MONSTER_NAMES_DICT[monster_race][random.randint(0, (len(MONSTER_NAMES_DICT[monster_race]) - 1))]
+        monster = MONSTERS_DICT[monster_race]
+        monster.name = monster_name
+
+    else:
+        monster_race = random_element_from_list(BOSS_MONSTER_LIST)
+        monster_name = MONSTER_NAMES_DICT[monster_race][random.randint(0, (len(MONSTER_NAMES_DICT[monster_race]) - 1))]
+        monster = MONSTERS_DICT[monster_race]
+        monster.name = monster_name
+
+    player_turn = random.randint(1, 20) + player.speed
+    monster_turn = random.randint(1, 20) + monster.speed
 
     if player_turn > monster_turn:
 
@@ -49,7 +69,7 @@ def combat(player):
 
     print(monster.intro)
     print(f"Look out! Its {monster.name} the {monster.race}!")
-    print(turn_order[0].name, turn_order[1].name)
+
     while encounter:
 
         player_choice = input("What would you like to do? \n(A)ttack, or (R)un?\n").lower()
@@ -69,7 +89,6 @@ def combat(player):
                         player.experience_points += monster.exp_yield
                         player.level_up()
                         monster.hit_points = monster.max_hit_points
-
 
                 else:
                     encounter = False
@@ -98,11 +117,11 @@ def combat(player):
 
         elif player_choice == 'run' or player_choice == 'r':
 
-            run_chance = (random.randint(0, 20) + player.speed)
+            run_chance = (random.randint(1, 20) + player.speed)
 
             if run_chance > monster.speed:
 
-                print(COMBAT_ESCAPE_DIALOGUE[random.randint(0, (len(COMBAT_ESCAPE_DIALOGUE) - 1))])
+                print(random_element_from_list(COMBAT_ESCAPE_DIALOGUE))
                 encounter = False
 
             else:
@@ -120,11 +139,31 @@ def gold_drop(player, monster):
         player.gold += gold_dropped
         print(f"You found {gold_dropped} gold from {monster.name}! Swish!")
 
+    elif monster.race in MEDIUM_MONSTER_LIST:
+        gold_dropped = random.randint(10, 50)
+        player.gold += gold_dropped
+        print(f"Wow, {monster.name} had {gold_dropped} gold in his pocket! Nice.")
+
+    elif monster.race in HARD_MONSTER_LIST:
+        gold_dropped = random.randint(50, 150)
+        player.gold = gold_dropped
+        print(f"{gold_dropped} gold from the {monster.race}!! You're rich!!")
+
+    else:
+        gold_dropped = random.randint(1000, 10000)
+        player.gold = gold_dropped
+        print(f"With {monster.name} the {monster.race} finally slain, you find {gold_dropped} gold in his treasure.\n"
+              f"You could retire for life!")
+
     return player.gold
 
 
 def game_over(player):
-    print(f'It was a good run {player.name}, but eventually you fell. \n'
-          f'You slayed {player.monsters_slain} monsters, had {player.gold} gold, and reached level {player.level}!\n'
-          f'Better luck next time!')
+    if player.monsters_slain <= 1:
+        print('Cmon you can definitely do better than ONE or ZERO monsters...right?\n'
+              f'The mighty {player.name} slayed a whopping {player.monsters_slain} monsters, wow! \n'
+              f'Better luck next time!')
 
+    print(f'It was a good run {player.name}, but eventually you fell. \n'
+          f'You slayed {player.monsters_slain} monsters, had {player.gold} gold, and reached level {player.level}!\n')
+    input()

@@ -93,7 +93,7 @@ class Ghoul(Monster):
 
 
 class Ooze(Monster):
-    def __int__(self):
+    def __init__(self):
         super().__init__()
         self.race = 'Ooze'
         self.armor = 4
@@ -101,8 +101,7 @@ class Ooze(Monster):
         self.max_hit_points = 16
         self.exp_yield = 8
         self.bloodied = 'Giant green piles of ooze cover the ground as you cleave through it, the cube looks like its falling apart!'
-        self.intro = 'This room looks strangely....clean? Something green drips down from the ceiling...its  Gelatinous Cube!'
-
+        self.intro = 'This room looks strangely....clean? Something green drips down from the ceiling...its a Gelatinous Cube!'
 
 # Hard Difficulty Monsters ---------------------------------------------------------------------------------------
 
@@ -183,38 +182,37 @@ MONSTER_NAMES_DICT = {
                 "Troll" : ['Stinky Steve', 'Fart Breath Harold', 'Pam’kol', 'Shexoha'],
                 "Skeleton" : ['Bones McCoy', 'Indiana Bones', 'Jerry Spinefeld', 'Bona Lisa', 'Skelly Clarkson'],
                 "Goblin" : ['Bankrup', 'Clird', 'Shake Spear', 'Silverpants', 'Pantoran'],
-                "Kobold" : ['Meepo', 'Scruntbuff', 'Quesarito', 'Lemmiewinks', 'Gitimahorse']
+                "Kobold" : ['Meepo', 'Scruntbuff', 'Quesarito', 'Lemmiewinks', 'Gitimahorse'],
+                "Ghoul" : ['Ghoul'],
+                "Ooze" : ['Lil Oozie'],
+                'Clay Golem' : ['Clay Golem'],
+                'Bone Devil' : ['Bone Devil'],
+                'Young Black Dragon' : ['Young Black Dragon'],
+                'Adult Black Dragon' : ['Adult Black Dragon'],
+                'Lich' : ['Lich'],
+                'Vampire' : ['Vampire']
                 }
 
 # Monsters Dictionary --------------------------------------------------------------------------------------------
 
-EASY_MONSTERS_DICT = {
-                'Goblin' : Goblin(),
-                'Kobold' : Kobold(),
-                'Skeleton' : Skeleton()
-                    }
-
-MEDIUM_MONSTERS_DICT = {
-                    'Troll' : Troll(),
-                    'Ghoul' : Ghoul(),
-                    'Ooze' : Ooze(),
-                    }
-
-HARD_MONSTER_DICT = {
-                    'Clay Golem' : ClayGolem(),
-                    'Bone Devil' : BoneDevil(),
-                    'Young Black Dragon' : YoungBlackDragon(),
-}
-
-BOSS_MONSTERS_DICT = {
+MONSTERS_DICT = {
                     'Vampire' : Vampire(),
                     'Lich' : Lich(),
-                    'Adult Black Dragon' : AdultBlackDragon()
+                    'Adult Black Dragon' : AdultBlackDragon(),
+                    'Clay Golem': ClayGolem(),
+                    'Bone Devil': BoneDevil(),
+                    'Young Black Dragon': YoungBlackDragon(),
+                    'Troll': Troll(),
+                    'Ghoul': Ghoul(),
+                    'Ooze': Ooze(),
+                    'Goblin': Goblin(),
+                    'Kobold': Kobold(),
+                    'Skeleton': Skeleton()
 }
 
 # Monsters by List -----------------------------------------------------------------------------------------------
 
 EASY_MONSTER_LIST = ['Goblin', 'Skeleton', 'Kobold']
-MEDIUM_MONSTER_LIST = ['Troll', 'Ghoul', 'Ooze']
-HARD_MONSTER_LIST = ['Clay Golem', 'Bone Devil', 'Young Black Dragon']
-BOSS_MONSTER_LIST = ['Vampire', 'Lich', 'Adult Black Dragon']
+MEDIUM_MONSTER_LIST = ['Troll', 'Ghoul', 'Ooze', 'Goblin', 'Skeleton', 'Kobold']
+HARD_MONSTER_LIST = ['Clay Golem', 'Bone Devil', 'Young Black Dragon', 'Troll', 'Ghoul', 'Ooze']
+BOSS_MONSTER_LIST = ['Vampire', 'Lich', 'Adult Black Dragon', 'Clay Golem', 'Bone Devil', 'Young Black Dragon']

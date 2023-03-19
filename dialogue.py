@@ -35,7 +35,7 @@ DODGED_TRAPPED_ROOM_DIALOGUE = [
 HIT_TRAPPED_ROOM_DIALOGUE = [
                             'Your foot finds a pressure plate and releases darts into your chest, ouch!\n',
                             'A spear shoots out from the wall next to you, right into your ribs, damn.\n',
-                            'As you walk through a trip-wire, a boulder is released from the ceiling, crushing you on its way past.\n',
+                            'As you walk through a trip-wire, a boulder is released from the ceiling, partially crushing you on its way past.\n',
                             'Stepping forward, your foot falls through the false ground and you diving into a pitfall, leaving your body aching.\n',
                             'Failing to notice the holes in the ground, some floor spikes come up and pierce your feet, ouch!\n'
                             ]
