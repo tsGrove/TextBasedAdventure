@@ -31,20 +31,20 @@ def generate_merchant():
             player_character.gold -= item_choice.buy
             player_character.inventory[item_choice.name] = item_choice.description
 
-            if item_choice == 'Weapon':
-                player_character.attack += 1
+            if random_item == 'Weapon':
+                player_character.attack_increase()
+                print('nice')
 
-            if item_choice == 'Armor':
-                player_character.armor += 1
+            if random_item == 'Armor':
+                player_character.armor_increase()
+                print('nice')
 
-            if item_choice == 'Boots':
-                player_character.speed += 1
+            if random_item == 'Boots':
+                player_character.speed_increase()
+                print('nice')
 
         elif buy_or_pass == 'yes' or buy_or_pass == 'y' and player_character.gold < item_choice.buy:
             print('Oh no! I dont believe you have enough gold friend. Maybe we\'ll see each other again!')
 
         elif buy_or_pass == 'no' or buy_or_pass == 'n':
             print('Understandable! Hopefully i can return with something that will appease you.')
-
-        else:
-            print('Im sorry? I couldn\'t hear you over the monsters screaming')

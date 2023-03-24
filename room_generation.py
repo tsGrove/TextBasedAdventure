@@ -1,5 +1,5 @@
 import random
-from actions import combat, random_element_from_list
+from actions import combat
 from merchant import *
 from dialogue import *
 
@@ -34,13 +34,13 @@ def generate_room():
             print(random_element_from_list(NO_TRAPS_DIALOGUE))
 
 # Player Choice gives the player 4 options to select from, ranging from Going to the next room, where a random event
-# Is selected using Generate Room Function, Item, which returns the players inventory contents and gold amount,
+# Is selected using Generate Room Function, Inventory, which returns the players inventory contents and gold amount,
 # Stats, which allows players to check their current HP and other values, and Rest, where a player can attempt to
 # Rest back to full at the risk of a monster spawning and negating their hp rejuvenation
 
 def player_choice():
-    choice = input('What would you like to do?\n'
-                   '(N)ext room, Use a/n (I)tem, Check your (S)tats, or (R)est?\n').lower()
+    choice = input("What would you like to do?\n"
+                   "(N)ext room, Check (I)ventory, Check your (S)tats, or (R)est?\n").lower()
 
     if choice == 'item' or choice == 'i':
         print("In your pocket you've got,")
@@ -75,7 +75,7 @@ def player_choice():
     elif choice =='r' or choice == 'rest':
 
         encounter_chance = random.randint(0, 20)
-        if encounter_chance >= 7:
+        if encounter_chance >= 10:
             print('You hear something approaching you in the darkness...\n')
             combat(player_character)
         else:

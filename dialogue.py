@@ -36,7 +36,7 @@ HIT_TRAPPED_ROOM_DIALOGUE = [
                             'Your foot finds a pressure plate and releases darts into your chest, ouch!\n',
                             'A spear shoots out from the wall next to you, right into your ribs, damn.\n',
                             'As you walk through a trip-wire, a boulder is released from the ceiling, partially crushing you on its way past.\n',
-                            'Stepping forward, your foot falls through the false ground and you diving into a pitfall, leaving your body aching.\n',
+                            'Stepping forward, your foot falls through the false ground and sends you diving face first into a pitfall, leaving your body aching.\n',
                             'Failing to notice the holes in the ground, some floor spikes come up and pierce your feet, ouch!\n'
                             ]
 
@@ -50,7 +50,7 @@ NO_TRAPS_DIALOGUE = [
 WELL_RESTED_DIALOGUE = [
                         'You feel well rested!\n',
                         'Who knew you could nap so well in a dungeon!\n',
-                        'As you rise from your quick rest, you see your reflection in the mirror, someones drawn on your face!\n',
+                        'As you rise from your quick rest, you see your reflection in the mirror, someones drawn on your face! Bunch of dicks.\n',
                         'You rise ready to take on more monsters and chew bubblegum, and youre all out of gum!\n',
                         'This stone floor feels awful, but a nap is a nap.\n'
                         ]
