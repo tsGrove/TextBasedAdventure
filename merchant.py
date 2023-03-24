@@ -1,6 +1,6 @@
 from player_info import Sword, Armor, Boots, HealthPotion, player_character
 from dialogue import MERCHANT_DIALOGUE_LIST
-from actions import random_element_from_list
+from combat import random_element_from_list
 
 ITEM_TYPES = ['Weapon', 'Potion', 'Armor', 'Boots']
 
@@ -33,15 +33,12 @@ def generate_merchant():
 
             if random_item == 'Weapon':
                 player_character.attack_increase()
-                print('nice')
 
             if random_item == 'Armor':
                 player_character.armor_increase()
-                print('nice')
 
             if random_item == 'Boots':
                 player_character.speed_increase()
-                print('nice')
 
         elif buy_or_pass == 'yes' or buy_or_pass == 'y' and player_character.gold < item_choice.buy:
             print('Oh no! I dont believe you have enough gold friend. Maybe we\'ll see each other again!')

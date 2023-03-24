@@ -1,34 +1,5 @@
 {
     "High Scores": [
-        {
-            "name": "Emong",
-            "level reached": 2,
-            "gold earned": 300,
-            "monsters slain": 18
-        },
-        {
-            "name": "Skel",
-            "level reached": 3,
-            "monsters slain": 11,
-            "gold earned": 79
-        },
-        {
-            "name": "Salami",
-            "level reached": 4,
-            "gold earned": 205,
-            "monsters slain": 22
-        },
-        {
-            "name": "Skel",
-            "level reached": 1,
-            "monsters slain": 0,
-            "gold earned": 100
-        },
-        {
-            "name": "Skel",
-            "level reached": 1,
-            "monsters slain": 4,
-            "gold earned": 125
-        }
+
     ]
 }

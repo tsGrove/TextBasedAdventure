@@ -29,7 +29,7 @@ class PlayerClass:
             self.attack += 2
             self.speed += 1
             self.experience_points = 0
-            self.exp_needed_to_level = (self.level ** 10)
+            self.exp_needed_to_level = (self.level * 10)
             self.level += 1
             print(f"Congrats! You reached level {self.level}!")
 

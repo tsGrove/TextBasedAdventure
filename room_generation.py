@@ -1,7 +1,8 @@
 import random
-from actions import combat
-from merchant import *
+from combat import combat, random_element_from_list
+from merchant import generate_merchant
 from dialogue import *
+from player_info import player_character, HealthPotion
 
 POSSIBLE_ENCOUNTERS = ['Monster', 'Monster', 'Monster', 'Monster', 'Treasure', 'Merchant', 'Trap', 'Trap']
 
@@ -48,21 +49,23 @@ def player_choice():
 
         for item in player_character.inventory:
             print(f"and {item}, {player_character.inventory[item]}")
-            if 'Potion of Healing' in player_character.inventory:
-                potion_choice = input('Would you like to drink a potion, (Y)es or (n)o?\n').lower()
-                print(f"You currently have {player_character.hit_points}")
 
-                if potion_choice == 'y' or potion_choice == 'yes':
-                    health_potion = HealthPotion()
-                    health_potion.drink_potion()
-                    print(random_element_from_list(POTION_DRANK_DIALOGUE))
+        if 'Potion of Healing' in player_character.inventory:
+            print(f"You currently have {player_character.hit_points}")
+            potion_choice = input('Would you like to drink a potion, (Y)es or (n)o?\n').lower()
 
-                elif potion_choice == 'n' or potion_choice == 'no':
-                    print('Fair enough, better to save it!')
 
-                else:
-                    print('Please enter a valid selection of yes, or no.')
-                player_choice()
+            if potion_choice == 'y' or potion_choice == 'yes':
+                health_potion = HealthPotion()
+                health_potion.drink_potion()
+                print(random_element_from_list(POTION_DRANK_DIALOGUE))
+
+            elif potion_choice == 'n' or potion_choice == 'no':
+                print('Fair enough, better to save it!')
+
+            else:
+                print('Please enter a valid selection of yes, or no.')
+            player_choice()
 
     elif choice == 'n' or choice == 'next':
         generate_room()
