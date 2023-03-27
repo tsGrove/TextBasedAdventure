@@ -2,6 +2,7 @@ import json
 import random
 from monsters import *
 from dialogue import COMBAT_ESCAPE_DIALOGUE
+from tabulate import tabulate
 
 # Grabs a random element from a list, used in a lot of the random options generated throughout the program
 def random_element_from_list(custom_list):
@@ -200,11 +201,14 @@ def game_over(player):
 
 # This just reads the json file and returns the data if the user so wishes to see it
 def check_high_scores():
-    check_scores = input('Would you like to see your top 10 high scores?\n').lower()
+    check_scores = input('Would you like to see your top 10 high scores?\n' '(Y)es or (N)o.\n').lower()
     if check_scores == "yes" or check_scores == 'y':
+        high_scores = []
         with open("json_scores.json", 'r') as f:
             data = json.load(f)
-            for player in data['High Scores']:
-                print(f"Adventurer Name: {player['name']}, Level: {player['level reached']}, Gold Earned: {player['gold earned']}, Number of Monsters Slain: {player['monsters slain']}")
+            for adventurers in data['High Scores']:
+                adventurer_info = list(adventurers.values())
+                high_scores.append(adventurer_info)
+            print(tabulate(high_scores, headers=['Name', 'Level Reached', 'Monsters Slain', 'Gold Earned'], tablefmt="pretty"))
     else:
         print('Gotcha, Hope you\'re brave enough to try again!')
