@@ -1,28 +1,5 @@
 {
     "High Scores": [
-        {
-            "name": "Skel",
-            "level reached": 1,
-            "monsters slain": 0,
-            "gold earned": 107
-        },
-        {
-            "name": "Jiimmm",
-            "level reached": 1,
-            "monsters slain": 2,
-            "gold earned": 8
-        },
-        {
-            "name": "Skel",
-            "level reached": 2,
-            "monsters slain": 6,
-            "gold earned": 123
-        },
-        {
-            "name": "Shea",
-            "level reached": 1,
-            "monsters slain": 1,
-            "gold earned": 10
-        }
+
     ]
 }
