@@ -1,8 +1,9 @@
 import random
-from combat import combat, random_element_from_list
-from merchant import generate_merchant
-from dialogue import *
-from player_info import player_character, HealthPotion
+from helper_functions.functions import random_element_from_list
+from helper_functions.combat import combat
+from npcs.merchant import generate_merchant
+from player_character.player_info import player_character, HealthPotion
+from helper_functions.dialogue import *
 
 POSSIBLE_ENCOUNTERS = ['Monster', 'Monster', 'Monster', 'Monster', 'Treasure', 'Merchant', 'Trap', 'Trap']
 
@@ -14,6 +15,7 @@ POSSIBLE_ENCOUNTERS = ['Monster', 'Monster', 'Monster', 'Monster', 'Treasure', '
 def generate_room():
     room_contents = random_element_from_list(POSSIBLE_ENCOUNTERS)
     if room_contents == 'Monster':
+        print('Hm? You can hear footsteps approaching from around the corner, you ready yourself for...\n')
         combat(player_character)
 
     elif room_contents == 'Treasure':
@@ -78,7 +80,7 @@ def player_choice():
     elif choice =='r' or choice == 'rest':
 
         encounter_chance = random.randint(0, 20)
-        if encounter_chance >= 10:
+        if encounter_chance >= 6:
             print('You hear something approaching you in the darkness...\n')
             combat(player_character)
         else:

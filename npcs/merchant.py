@@ -1,6 +1,6 @@
-from player_info import Sword, Armor, Boots, HealthPotion, player_character
-from dialogue import MERCHANT_DIALOGUE_LIST
-from combat import random_element_from_list
+from player_character.player_info import Sword, Armor, Boots, HealthPotion, player_character
+from helper_functions.dialogue import MERCHANT_DIALOGUE_LIST
+from helper_functions.combat import random_element_from_list
 
 ITEM_TYPES = ['Weapon', 'Potion', 'Armor', 'Boots']
 
@@ -56,6 +56,7 @@ def generate_merchant():
 
         elif shop_or_not == "no" or shop_or_not == 'n':
             print('Understandable, have an excellent adventure!')
+            shopping = false
 
         else:
             print("Im sorry, I couldn't hear you over the monsters screaming, could you repeat that?\n"
