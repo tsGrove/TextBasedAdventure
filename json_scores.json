@@ -1,5 +1,16 @@
 {
     "High Scores": [
-
+        {
+            "name": "Skel",
+            "level reached": 1,
+            "monsters slain": 2,
+            "gold earned": 16
+        },
+        {
+            "name": "Skel",
+            "level reached": 1,
+            "monsters slain": 1,
+            "gold earned": 17
+        }
     ]
 }

@@ -54,5 +54,9 @@ def generate_merchant():
                 print("Im sorry, I couldn't hear you over the monsters screaming, could you repeat that?\n"
                       "Please enter (Y)es or (N)o.")
 
+        elif shop_or_not == "no" or shop_or_not == 'n':
+            print('Understandable, have an excellent adventure!')
+
         else:
-            continue
+            print("Im sorry, I couldn't hear you over the monsters screaming, could you repeat that?\n"
+                  "Please enter (Y)es or (N)o.")
