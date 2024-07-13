@@ -1,9 +1,9 @@
 import json
 import random
 from npcs.monsters import *
-from helper_functions.dialogue import COMBAT_ESCAPE_DIALOGUE
+from functionality.dialogue import COMBAT_ESCAPE_DIALOGUE
 from tabulate import tabulate
-from helper_functions.functions import random_element_from_list
+from functionality.functions import random_element_from_list
 
 # Rolls a random integer between 1 and 20, if said number + the players attack is higher than the monsters defense,
 # The attack is successful
@@ -186,7 +186,7 @@ def game_over(player):
         print(f'It was a good run {player.name}, but eventually you fell. \n'
               f'You slayed {player.monsters_slain} monsters, had {player.gold} gold, and reached level {player.level}!\n')
 
-    with open("./helper_functions/json_scores.json", "r+") as file:
+    with open("./functionality/json_scores.json", "r+") as file:
         file_data = json.load(file)
         file_data["High Scores"].append(addition_to_high_score)
         file.seek(0)
@@ -199,7 +199,7 @@ def check_high_scores():
     check_scores = input('Would you like to see your top 10 high scores?\n' '(Y)es or (N)o.\n').lower()
     if check_scores == "yes" or check_scores == 'y':
         high_scores = []
-        with open("./helper_functions/json_scores.json", 'r') as f:
+        with open("./functionality/json_scores.json", 'r') as f:
             data = json.load(f)
             for adventurers in data['High Scores']:
                 adventurer_info = list(adventurers.values())

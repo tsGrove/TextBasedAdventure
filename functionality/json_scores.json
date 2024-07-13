@@ -41,6 +41,30 @@
             "level reached": 1,
             "monsters slain": 2,
             "gold earned": 22
+        },
+        {
+            "name": "Shea",
+            "level reached": 1,
+            "monsters slain": 1,
+            "gold earned": 6
+        },
+        {
+            "name": "Rogue",
+            "level reached": 1,
+            "monsters slain": 3,
+            "gold earned": 31
+        },
+        {
+            "name": "Rogue",
+            "level reached": 1,
+            "monsters slain": 3,
+            "gold earned": 31
+        },
+        {
+            "name": "Shea",
+            "level reached": 1,
+            "monsters slain": 1,
+            "gold earned": 9
         }
     ]
 }

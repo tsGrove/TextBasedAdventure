@@ -1,11 +1,12 @@
 import random
-from helper_functions.functions import random_element_from_list
-from helper_functions.combat import combat
+from functionality.functions import random_element_from_list
+from functionality.combat import combat
 from npcs.merchant import generate_merchant
-from player_character.player_info import player_character, HealthPotion
-from helper_functions.dialogue import *
+from player_character.player_info import player_character
+from player_character.items import Armor, Sword, HealthPotion, Boots
+from functionality.dialogue import *
 
-POSSIBLE_ENCOUNTERS = ['Monster', 'Monster', 'Monster', 'Monster', 'Treasure', 'Merchant', 'Trap', 'Trap']
+POSSIBLE_ENCOUNTERS = ['Merchant', 'Merchant', 'Merchant', 'Merchant', 'Merchant', 'Merchant', 'Merchant', 'Merchant']
 
 # Generate room function firsts selects a random element from inside the Possible Encounters List, and then gives
 # The player an encounter based on the element selected, ranging from Monster which starts the combat function, Treasure
